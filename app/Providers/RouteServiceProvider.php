@@ -23,7 +23,8 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        //定义全局约束,这样带路由的参数只能传数字
+        Route::pattern('id', '[0-9]+');
 
         parent::boot();
     }

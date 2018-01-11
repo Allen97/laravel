@@ -18,3 +18,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::prefix('article')->group(function (){
+    Route::get('index','ArticleController@index');
+    Route::get('create','ArticleController@create');
+    Route::get('store','ArticleController@store');
+    Route::get('edit/{id}/{name}','ArticleController@edit');
+});
