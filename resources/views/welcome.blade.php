@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ app()->getLocale() }}">
+<html lang="{{ app()->getLocale() }}" xmlns:v-on="http://www.w3.org/1999/xhtml">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -63,33 +63,61 @@
                 margin-bottom: 30px;
             }
         </style>
+
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
-                </div>
-            @endif
 
+
+        {{--<div class="flex-center position-ref full-height">--}}
+            {{--@if (Route::has('login'))--}}
+                {{--<div class="top-right links">--}}
+                    {{--@auth--}}
+                        {{--<a href="{{ url('/home') }}">Home</a>--}}
+                    {{--@else--}}
+                        {{--<a href="{{ route('login') }}">Login</a>--}}
+                        {{--<a href="{{ route('register') }}">Register</a>--}}
+                    {{--@endauth--}}
+                {{--</div>--}}
+            {{--@endif--}}
+
+            {{--<div class="content">--}}
+                {{--<div class="title m-b-md">--}}
+                    {{--Laravel--}}
+                {{--</div>--}}
+
+                {{--<div class="links">--}}
+                    {{--<a href="https://laravel.com/docs">Documentation</a>--}}
+                    {{--<a href="https://laracasts.com">Laracasts</a>--}}
+                    {{--<a href="https://laravel-news.com">News</a>--}}
+                    {{--<a href="https://forge.laravel.com">Forge</a>--}}
+                    {{--<a href="https://github.com/laravel/laravel">GitHub</a>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+
+        <div class="container">
             <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                <div class="title">
+                    <p>@{{ message }}</p>
+                    <button v-on:click="reverseMessage">反转消息</button>
                 </div>
             </div>
         </div>
+
+
     </body>
+    <script type="text/javascript" src="{{asset('js/vue.js')}}"></script>
+    <script type="text/javascript">
+        new Vue({
+            el: '.title',
+            data: {
+                message: 'Hello Laravel!'
+            },
+            methods: {
+                reverseMessage: function () {
+                    this.message = this.message.split('').reverse().join('')
+                }
+            }
+        })
+    </script>
 </html>
