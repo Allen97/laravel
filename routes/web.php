@@ -26,3 +26,5 @@ Route::prefix('article')->group(function (){
     Route::get('store','ArticleController@store');
     Route::get('edit/{id}/{name}','ArticleController@edit');
 });
+
+Route::any('/user', 'UserController@show');
